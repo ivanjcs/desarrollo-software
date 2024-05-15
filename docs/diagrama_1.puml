@@ -23,6 +23,10 @@ class Role {
     - name: str
     - description: str
 }
+
+class hola {
+    - yo: str
+}
 Model <|-- User
 Model <|-- Role
 Model <|-- UserData
