@@ -22,10 +22,11 @@ class UserData {
 }
 
 class Movie {
+    - name
     - directors
     - year
-    - start date
-    - final date
+    - start_date
+    - final_date
     - duration
     - description
     - genre

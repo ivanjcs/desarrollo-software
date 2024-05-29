@@ -8,6 +8,7 @@ from app import create_app, db
 
 class MovieTestCase(unittest.TestCase):
     def setUp(self):
+        self.NAME_PRUEBA = 'Kimi No Nawa'
         self.DIRECTOR_PRUEBA = 'Makoto Shinkai'
         self.YEAR_PRUEBA = '2016'
         self.START_DATE_PRUEBA = '28/05/2024'
@@ -36,6 +37,7 @@ class MovieTestCase(unittest.TestCase):
         
         movie = self.__get_movie()
 
+        self.assertTrue(movie.name, self.NAME_PRUEBA)
         self.assertTrue(movie.director, self.DIRECTOR_PRUEBA)
         self.assertTrue(movie.year, self.YEAR_PRUEBA)
         self.assertTrue(movie.start_date, self.START_DATE_PRUEBA)
@@ -54,7 +56,8 @@ class MovieTestCase(unittest.TestCase):
 
         #movie_service.save(movie)
 
-        #self.assertGreaterEqual(movie.id, 1)
+        self.assertGreaterEqual(movie.id, 1)
+        self.assertTrue(movie.name, self.NAME_PRUEBA)
         self.assertTrue(movie.director, self.DIRECTOR_PRUEBA)
         self.assertTrue(movie.year, self.YEAR_PRUEBA)
         self.assertTrue(movie.start_date, self.START_DATE_PRUEBA)
@@ -96,6 +99,7 @@ class MovieTestCase(unittest.TestCase):
     def __get_movie(self):
         
         movie = Movie()
+        movie.name = self.NAME_PRUEBA
         movie.director = self.DIRECTOR_PRUEBA
         movie.year = self.YEAR_PRUEBA
         movie.start_date = self.START_DATE_PRUEBA
