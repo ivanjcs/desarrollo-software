@@ -8,6 +8,10 @@ repository = MovieRepository()
 class MovieService:
     
     """ Clase que se encarga de CRUD de Movies """
+    def save(self, movie: Movie) -> Movie:
+        #movie.password = Security.generate_password(movie.password) ????????? wtf
+        return repository.save(movie)
+
     def update(self, movie: Movie, id: int) -> Movie:
         return repository.update(movie, id)
     
@@ -25,4 +29,3 @@ class MovieService:
     
     # agregar más formas de encontrar peliculas
 
-    
