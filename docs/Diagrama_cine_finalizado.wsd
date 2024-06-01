@@ -22,11 +22,10 @@ class UserData {
 }
 
 class Movie {
-    - name
-    - director
+    - directors
     - year
-    - start_date
-    - final_date
+    - start date
+    - final date
     - duration
     - description
     - genre
@@ -59,5 +58,6 @@ Feature --- Ticket
 
 User -- UserData
 User -- Role
+
 
 @enduml

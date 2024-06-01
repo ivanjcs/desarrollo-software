@@ -2,9 +2,9 @@ import unittest
 from flask import current_app
 from app.models import Movie
 from app import create_app, db
-#from app.services import MovieService
+from app.services import MovieService
 
-#movie_service = MovieService()
+movie_service = MovieService()
 
 class MovieTestCase(unittest.TestCase):
     def setUp(self):
@@ -54,7 +54,7 @@ class MovieTestCase(unittest.TestCase):
 
         movie = self.__get_movie
 
-        #movie_service.save(movie)
+        movie_service.save(movie)
 
         self.assertGreaterEqual(movie.id, 1)
         self.assertTrue(movie.name, self.NAME_PRUEBA)
@@ -73,7 +73,7 @@ class MovieTestCase(unittest.TestCase):
         
         movie = self.__get_movie()
 
-        #movie_service.save(movie)
+        movie_service.save(movie)
 
         movie_service.delete(movie)
         self.assertIsNone(movie_service.find(movie))
@@ -93,8 +93,9 @@ class MovieTestCase(unittest.TestCase):
 
         movie_find = movie_service.find(1)
         self.assertIsNotNone(movie_find)
-        #self.assertEqual(movie_find.id, movie.id)
-        self.assertEqual(movie_find.year, movie.year)
+        self.assertEqual(movie_find.id, movie.id)
+        self.assertEqual(movie_find.name, movie.name)
+        # se puede usar el metodo movie_find.name ?????????????
 
     def __get_movie(self):
         

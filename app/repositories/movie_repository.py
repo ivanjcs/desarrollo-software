@@ -11,7 +11,7 @@ class MovieRepository:
     def update(self, movie: Movie, id: int) -> Movie:
         entity = self.find(id)
         entity.name = movie.name
-        entity.directors = movie.directors
+        entity.director = movie.director
         entity.year = movie.year
         entity.start_date = movie.start_date
         entity.final_date = movie.final_date
