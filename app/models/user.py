@@ -1,11 +1,14 @@
 from dataclasses import dataclass
 from typing import List
+
+from app.models.audit_mixin import AuditMixin
+from app.models.soft_delete import SoftDeleteMixin
 from .user_data import UserData
 from app import db
 from app.models.relations import users_roles
 
 @dataclass(init=False, repr=True, eq=True)
-class User(db.Model):
+class User(SoftDeleteMixin, AuditMixin,db.Model):
     __tablename__ = 'users'
     id: int = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username: str = db.Column(db.String(80), unique=True, nullable=False)
@@ -20,4 +23,13 @@ class User(db.Model):
     def __init__(self, user_data: UserData = None):
         self.data = user_data
     
+    # Por que agrega metodo add_role y remove_role
     #TODO: Implementar metodos para agregar, eliminar y listar roles
+    
+    def add_role(self, role):
+        if role not in self.roles:
+            self.roles.append(role)
+    
+    def remove_role(self, role):
+        if role in self.roles:
+            self.roles.remove(role)
