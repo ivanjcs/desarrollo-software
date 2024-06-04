@@ -52,7 +52,7 @@ class MovieTestCase(unittest.TestCase):
 
     def test_movie_save(self):
 
-        movie = self.__get_movie
+        movie = self.__get_movie()
 
         movie_service.save(movie)
 
@@ -95,7 +95,6 @@ class MovieTestCase(unittest.TestCase):
         self.assertIsNotNone(movie_find)
         self.assertEqual(movie_find.id, movie.id)
         self.assertEqual(movie_find.name, movie.name)
-        # se puede usar el metodo movie_find.name ?????????????
 
     def __get_movie(self):
         
