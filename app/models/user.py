@@ -26,6 +26,7 @@ class User(SoftDeleteMixin, AuditMixin,db.Model):
     # Por que agrega metodo add_role y remove_role
     #TODO: Implementar metodos para agregar, eliminar y listar roles
     
+    # relacion muchos a muchos
     def add_role(self, role):
         if role not in self.roles:
             self.roles.append(role)
