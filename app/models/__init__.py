@@ -3,4 +3,4 @@ from .role import Role
 from .user_data import UserData
 from .movie import Movie
 from .room import Room
-
+from .ticket import Ticket
