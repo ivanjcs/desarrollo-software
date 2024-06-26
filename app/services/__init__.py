@@ -6,3 +6,4 @@ from .movie_services import MovieService
 from .room_services import RoomService
 from .ticket_services import TicketService
 from .feature_services import FeatureService
+from .response_message import ResponseMessage

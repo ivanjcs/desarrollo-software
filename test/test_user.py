@@ -1,8 +1,10 @@
+import os
 import unittest
 from flask import current_app
-from app.models import User, UserData
-from app import create_app, db
-from app.services import UserService
+from app import create_app
+from app.models import Role, User, UserData
+from app import db
+from app.services import RoleService, UserService
 
 user_service = UserService()
 
