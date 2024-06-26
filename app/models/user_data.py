@@ -4,7 +4,8 @@ from app.models.audit_mixin import AuditMixin
 from app.models.soft_delete import SoftDeleteMixin
 
 @dataclass(init=False, repr=True, eq=True)
-class UserData(SoftDeleteMixin, AuditMixin,db.Model):
+class UserData(SoftDeleteMixin, AuditMixin, db.Model): 
+    # soft delete mixin agrega una tabla mas que dice la fecha en que se creo
     __tablename__ = 'users_data'
     id: int = db.Column(db.Integer, primary_key=True, autoincrement=True)
     firstname: str = db.Column(db.String(80), nullable=False)
@@ -16,4 +17,8 @@ class UserData(SoftDeleteMixin, AuditMixin,db.Model):
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
     #Relacion Uno a Uno bidireccional con User
     #Flask Web Development Capitulo: Database Relationships Revisited Pag 49,149 
-    user = db.relationship("User", back_populates='data', uselist=False)
+    user = db.relationship("User", back_populates='data', uselist=False, foreign_keys=[user_id])
+    
+    #Relacion Muchos a Uno bidireccional con Profile
+    profile_id = db.Column('profile_id', db.Integer, db.ForeignKey('profiles.id'))
+    profile = db.relationship("Profile", back_populates='data')

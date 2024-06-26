@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"python.analysis.enablePytestSupport": false,
-		"python.testing.unittestEnabled": true
+		"python.testing.unittestEnabled": true,
+		"discord.enabled": false
 	}
 }
