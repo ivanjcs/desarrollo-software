@@ -8,8 +8,8 @@ feature_service = FeatureService()
 
 class FeatureTestCase(unittest.TestCase):
     def setUp(self):
-        self.FECHA_INICIO_PRUEBA = '28/05/2024'
-        self.FECHA_FINAL_PRUEBA = '28/06/2024'
+        self.FECHA_INICIO_PRUEBA = '2024/05/28'
+        self.FECHA_FINAL_PRUEBA = '2024/06/28'
         
         self.app = create_app()
         self.app_context = self.app.app_context()
