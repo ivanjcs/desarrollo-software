@@ -1,6 +1,7 @@
 from typing import List, Type
 from app.models import User
 from app import db
+from app.models.user_data import UserData
 
 class UserRepository:
     """
@@ -13,14 +14,26 @@ class UserRepository:
     
     def update(self, user: User, id: int) -> User:
         entity = self.find(id)
+        if entity is None:
+            return None
+        
         entity.username = user.username
         entity.email = user.email
+        
+        if user.password is not None:
+            entity.password = user.password
+        if user.data is not None:
+            self.__update_data(entity, user.data)
+ 
         db.session.add(entity)
         db.session.commit()
         return entity
     
+    
     def delete(self, user: User) -> None:
-        db.session.delete(user)
+        if user.data is not None:
+            user.data.delete()
+        user.delete()
         db.session.commit()
     
     def all(self) -> List[User]:
@@ -42,4 +55,10 @@ class UserRepository:
         #busqueda por like
         return db.session.query(User).filter(User.email.like(f'%{email}%')).all()
 
-    
+    def __update_data(self, entity: User, data: UserData):
+        entity.data.firstname = data.firstname
+        entity.data.lastname = data.lastname
+        entity.data.phone = data.phone
+        entity.data.address = data.address
+        entity.data.city = data.city
+        entity.data.country = data.country

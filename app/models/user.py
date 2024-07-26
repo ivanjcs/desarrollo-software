@@ -20,8 +20,11 @@ class User(SoftDeleteMixin, AuditMixin, db.Model):
     #Flask Web Development Capitulo: Database Relationships Revisited Pag 49,149 
     roles = db.relationship("Role", secondary=users_roles, back_populates='users')
     
-    def __init__(self, user_data: UserData = None):
-        self.data = user_data
+    def __init__(self, username: str = None, password: str = None, email: str = None, data: UserData = None):
+        self.data = data
+        self.username = username
+        self.password = password
+        self.email = email
     
     # Por que agrega metodo add_role y remove_role
     #TODO: Implementar metodos para agregar, eliminar y listar roles
