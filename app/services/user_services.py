@@ -45,6 +45,6 @@ class UserService:
     def check_auth(self, username, password) -> bool:
         user = self.find_by_username(username)
         if user is not None:
-            return Security.check_password(user.password, password)
+            return self.__security.check_password(user.password, password)
         else:
             return False

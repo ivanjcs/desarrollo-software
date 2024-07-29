@@ -109,6 +109,7 @@ class UserTestCase(unittest.TestCase):
         data.country = self.COUNTRY_PRUEBA
         
         user = User(data)
+        user.data = data
         user.username = self.USERNAME_PRUEBA
         user.email = self.EMAIL_PRUEBA
         user.password = self.PASSWORD_PRUEBA

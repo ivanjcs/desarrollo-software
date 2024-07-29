@@ -27,7 +27,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URI')
-        
+    
 class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
@@ -42,7 +42,7 @@ def factory(app):
     configuration = {
         'testing': TestConfig,
         'development': DevelopmentConfig,
-        'production': ProductionConfig,
+        'production': ProductionConfig
     }
     
     return configuration[app]

@@ -53,7 +53,7 @@ class UserRepository:
     
     def find_by_email(self, email: str) -> list[User]:
         #busqueda por like
-        return db.session.query(User).filter(User.email.like(f'%{email}%')).all()
+        return db.session.query(User).filter(User.email == email).one_or_none()
 
     def __update_data(self, entity: User, data: UserData):
         entity.data.firstname = data.firstname
