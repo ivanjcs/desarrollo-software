@@ -1,7 +1,8 @@
 from typing import List
 from app.models import User
 from app.repositories import UserRepository
-from app.services import Security
+
+from app.services import SecurityManager, WerkzeugSecurity
 
 repository = UserRepository()
 
@@ -9,14 +10,24 @@ class UserService:
 
     """ Clase que se encarga de CRUD de usuarios """
 
+    def __init__(self) -> None:
+        self.__security = SecurityManager(WerkzeugSecurity())
+    
     def save(self, user: User) -> User:
-        user.password = Security.generate_password(user.password)
+        #TODO: Implementar auditoria
+        user.password = self.__security.generate_password(user.password)
         return repository.save(user)
     
     def update(self, user: User, id: int) -> User:
+        #TODO: Implementar auditoria
+        if user.password is not None:
+            user.password = self.__security.generate_password(user.password)
+            
         return repository.update(user, id)
     
-    def delete(self, user: User) -> None:
+    def delete(self, id: int) -> None:
+        #TODO: Implementar auditoria
+        user = repository.find(id)
         repository.delete(user)
     
     def all(self) -> List[User]:
