@@ -1,4 +1,4 @@
-from app.models.user import User
+from app.models.movie import Movie
 from marshmallow import validate, fields, Schema, post_load
 
 class MovieSchema(Schema):
@@ -12,3 +12,9 @@ class MovieSchema(Schema):
     description = fields.String(required=True)
     genre = fields.String(required=True)
     classification = fields.String(required=True)
+    cast = fields.String(required=True)
+    language = fields.String(required=True)
+
+    @post_load
+    def make_movie(self, data, **kwargs):
+        return Movie(**data)

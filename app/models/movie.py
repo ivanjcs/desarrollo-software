@@ -26,5 +26,18 @@ class Movie(SoftDeleteMixin, AuditMixin,db.Model):
     cast: str = db.Column(db.String(80), nullable=False)
     language: str = db.Column(db.String(80), nullable=False)
     
+    def __init__(self, name: str = None, director: str = None, year: int = None, start_date: str = None, final_date: str = None, duration: int = None, description: str = None, genre: str = None, classification: str = None, cast: str = None, language: str = None):
+        self.name = name
+        self.director = director
+        self.year = year
+        self.start_date = start_date
+        self.final_date = final_date
+        self.duration = duration
+        self.description = description
+        self.genre = genre
+        self.classification = classification
+        self.cast = cast
+        self.language = language
+
     # FALTAN RELACIONES
     

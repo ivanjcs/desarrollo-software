@@ -8,6 +8,7 @@ user_schema = UserSchema()
 response_schema = ResponseSchema()
 user_service = UserService()
 
+# Muestra todos los usuarios
 @user.route('/users', methods=['GET'])
 def index():
     return {"users": user_schema.dump(user_service.all(),many=True)}, 200
@@ -24,7 +25,7 @@ def find(id:int):
 
 @user.route('/users/add', methods=['POST'])
 def post_user():
-    user = user_schema.load(request.json)
+    user = user_schema.load(request.json) 
     return {"user": user_schema.dump(user_service.save(user))}, 201
 
 
