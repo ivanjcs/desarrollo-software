@@ -20,7 +20,7 @@ class Movie(SoftDeleteMixin, AuditMixin,db.Model):
     start_date: str = Column(DateTime, nullable=False, default=datetime.now())
     final_date: str = Column(DateTime, nullable=False, default=datetime.now()+timedelta(weeks=2))
     duration: int = db.Column(db.Integer, nullable=False)
-    description: str = db.Column(db.String(80), nullable=False)
+    description: str = db.Column(db.String(200), nullable=False)
     genre: str = db.Column(db.String(80), nullable=False)
     classification: str = db.Column(db.String(80), nullable=False)
     cast: str = db.Column(db.String(80), nullable=False)
@@ -38,6 +38,4 @@ class Movie(SoftDeleteMixin, AuditMixin,db.Model):
         self.classification = classification
         self.cast = cast
         self.language = language
-
-    # FALTAN RELACIONES
     
