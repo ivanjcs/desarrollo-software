@@ -28,12 +28,11 @@ def post_user():
     user = user_schema.load(request.json) 
     return {"user": user_schema.dump(user_service.save(user))}, 201
 
-
 @user.route('/users/<int:id>', methods=['PUT'])
 def update_user(id:int):
     user = user_schema.load(request.json)
     response_builder = ResponseBuilder()
-    response_builder.add_message("Usuario actualizado").add_status_code(100).add_data( user_schema.dump(user_service.update(user, id)))
+    response_builder.add_message("Usuario actualizado").add_status_code(100).add_data(user_schema.dump(user_service.update(user, id)))
     return response_schema.dump(response_builder.build()), 200
 
 @user.route('/users/username/<username>', methods=['GET'])

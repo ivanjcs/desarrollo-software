@@ -15,7 +15,8 @@ class MovieService:
     def update(self, movie: Movie, id: int) -> Movie:
         return repository.update(movie, id)
     
-    def delete(self, movie: Movie) -> None:
+    def delete(self, id: int) -> None:
+        movie = repository.find(id)
         repository.delete(movie)
 
     def all(self) -> List[Movie]:
