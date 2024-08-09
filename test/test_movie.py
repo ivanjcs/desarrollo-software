@@ -75,7 +75,7 @@ class MovieTestCase(unittest.TestCase):
 
         movie_service.save(movie)
 
-        movie_service.delete(movie)
+        movie_service.delete(movie.id)
         self.assertIsNone(movie_service.find(movie))
 
     def test_movie_all(self):
