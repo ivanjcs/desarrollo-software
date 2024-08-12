@@ -1,5 +1,20 @@
 @startuml Diagrama de cine
 
+class Model {
+ clase de SQLAlchemy
+}
+
+class AuditMixin {
+    - created_at: datetime
+    - updated_at: datetime
+    - created_by: int
+    - updated_by: int
+}
+
+class SoftDeleteMixin {
+    - deleted_at: datetime
+}
+
 class User {
     - username: str
     - email: str
@@ -19,6 +34,14 @@ class UserData {
     - address: str
     - city: str
     - country: str
+}
+
+class Profile {
+    - name: str
+}
+
+class UserRoles {
+
 }
 
 class Movie {
@@ -53,11 +76,42 @@ class Feature {
     - date_to
 }
 
-Feature --- Room
-Feature --- Movie
-Feature --- Ticket
+'Relaciones
+UserData "1" --- "1" User
+UserData "n" --- "1" Profile
+User "n" --- "1" UserRoles
+Role "n" --- "1" UserRoles
 
-User -- UserData
-User -- Role
+User --|> AuditMixin
+Profile --|> AuditMixin
+UserData --|> AuditMixin
+
+User --|> SoftDeleteMixin
+Profile --|> SoftDeleteMixin
+UserData --|> SoftDeleteMixin
+
+User --|> Model
+Profile --|> Model
+UserData --|> Model
+Profile --|> Model
+
+Room --|> Model
+Movie --|> Model
+Ticket --|> Model
+Feature --|> Model
+
+Room --|> Feature
+Movie --|> Feature
+Ticket --|> Feature
+
+'Room ---|> AuditMixin
+'Movie ---|> AuditMixin
+'Ticket ---|> AuditMixin
+'Feature ---|> AuditMixin
+
+'Room --|> SoftDeleteMixin
+'Movie --|> SoftDeleteMixin
+'Ticket --|> SoftDeleteMixin
+'Feature --|> SoftDeleteMixin
 
 @enduml
