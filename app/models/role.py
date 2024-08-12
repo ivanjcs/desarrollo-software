@@ -12,8 +12,6 @@ class Role (db.Model):
     #Flask Web Development Capitulo: Database Relationships Revisited Pag 49,149 
     users = db.relationship("User", secondary=users_roles, back_populates='roles')
     
-    #TODO: Implementar metodos para agregar, eliminar y listar usuarios
-    ##asdas
     def add_user(self, user):
         if user not in self.users:
             self.users.append(user)

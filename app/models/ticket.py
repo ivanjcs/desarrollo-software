@@ -1,8 +1,5 @@
 from dataclasses import dataclass
-from typing import List
 from app import db
-from app.models.relations import users_roles
-
 
 @dataclass(init=False, repr=True, eq=True)
 class Ticket(db.Model):

@@ -1,4 +1,4 @@
-from typing import List, Type
+from typing import List
 from app.models import Movie
 from app import db
 
@@ -21,7 +21,7 @@ class MovieRepository:
         entity.classification = movie.classification
         entity.cast = movie.cast
         entity.language = movie.language
-        # AGREGAR MAS FILTRADOS
+        
         db.session.add(entity)
         db.session.commit()
         return entity

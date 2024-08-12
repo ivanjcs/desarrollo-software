@@ -1,7 +1,6 @@
 from typing import List
 from app.models import Feature
 from app.repositories import FeatureRepository
-#from app.services import Security
 
 repository = FeatureRepository()
 
@@ -22,6 +21,4 @@ class FeatureService:
     
     def find(self, id: int) -> Feature:
         return repository.find(id)
-    
-    # agregar más formas de encontrar fechas
 

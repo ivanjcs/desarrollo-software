@@ -1,8 +1,4 @@
 from dataclasses import dataclass
-from typing import List
-
-#from app.models.audit_mixin import AuditMixin
-#from app.models.soft_delete import SoftDeleteMixin
 from app import db
 from app.models.relations import users_roles
 from app.models.audit_mixin import AuditMixin

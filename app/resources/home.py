@@ -1,4 +1,4 @@
-from flask import jsonify, Blueprint
+from flask import Blueprint
 from app.mapping.response_schema import ResponseSchema
 from app.services.response_message import ResponseBuilder
 

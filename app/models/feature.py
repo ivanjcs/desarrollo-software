@@ -13,4 +13,3 @@ class Feature(SoftDeleteMixin, AuditMixin,db.Model):
     date_from: str = Column(DateTime, nullable=False, default=datetime.now())
     date_to: str = Column(DateTime, nullable=False, default=datetime.now()+timedelta(weeks=2))
     
-    # FALTAN RELACIONES

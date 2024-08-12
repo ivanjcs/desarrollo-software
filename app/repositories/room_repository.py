@@ -38,9 +38,6 @@ class RoomRepository:
         return db.session.query(Room).filter(Room.name == name).one_or_none()
     
     def find_by_number(self, number: int) -> list[Room]:
-        #busqueda por like
         return db.session.query(Room).filter(Room.number == number).one()
-    
-    # one(), one_or_none()?, all()
 
     

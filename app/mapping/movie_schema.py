@@ -1,5 +1,5 @@
 from app.models.movie import Movie
-from marshmallow import validate, fields, Schema, post_load
+from marshmallow import fields, Schema, post_load
 
 class MovieSchema(Schema):
     id = fields.Integer(dump_only=True)

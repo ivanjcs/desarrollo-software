@@ -8,6 +8,7 @@ movie = Blueprint('movie', __name__)
 movie_schema = MovieSchema()
 response_schema = ResponseSchema()
 movie_service = MovieService()
+response_builder = ResponseBuilder()
 
 # Mostrar todas las peliculas
 @movie.route('/movies', methods=['GET'])
@@ -17,7 +18,6 @@ def index():
 # Obtener película por ID
 @movie.route('/movies/<int:id>', methods=['GET'])
 def find(id:int):
-    response_builder = ResponseBuilder()
     response_builder.add_message("Pelicula encontrada").add_status_code(100).add_data(movie_schema.dump(movie_service.find(id)))
     return response_schema.dump(response_builder.build()), 200
 
@@ -31,7 +31,6 @@ def post_movie():
 @movie.route('/movies/<int:id>', methods=['PUT'])
 def update_movie(id:int):
     movie = movie_schema.load(request.json)
-    response_builder = ResponseBuilder()
     response_builder.add_message("Película actualizada").add_status_code(100).add_data(movie_schema.dump(movie_service.update(movie, id)))
     return response_schema.dump(response_builder.build()), 200
 
@@ -39,7 +38,6 @@ def update_movie(id:int):
  # los espacios en las url se escriben como '%20'
 @movie.route('/movies/name/<name>', methods=['GET'])
 def find_by_name(name:str):
-    response_builder = ResponseBuilder()
     movie = movie_service.find_by_name(name)
     if movie is not None:
         response_builder.add_message("Película encontrada").add_status_code(100).add_data(movie_schema.dump(movie))
@@ -53,7 +51,5 @@ def find_by_name(name:str):
 @movie.route('/movies/<int:id>', methods=['DELETE'])
 def delete_movie(id):
     movie_service.delete(id)
-
-    response_builder = ResponseBuilder()
     response_builder.add_message("Película borrada").add_status_code(100).add_data({'id': id})
     return response_schema.dump(response_builder.build()), 200

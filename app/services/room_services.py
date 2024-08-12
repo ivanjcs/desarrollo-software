@@ -1,14 +1,12 @@
 from typing import List
 from app.models import Room
 from app.repositories import RoomRepository
-#from app.services import Security
 
 repository = RoomRepository()
 
 class RoomService:
 
     def save(self, room: Room) -> Room:
-        #room.password = Security.generate_password(room.password)
         return repository.save(room)
     
     def update(self, room: Room, id: int) -> Room:

@@ -1,14 +1,12 @@
 from typing import List
 from app.models import Ticket
 from app.repositories import TicketRepository
-#from app.services import Security
 
 repository = TicketRepository()
 
 class TicketService:
 
     def save(self, ticket: Ticket) -> Ticket:
-        #movie.password = Security.generate_password(movie.password) ????????? wtf
         return repository.save(ticket)
     
     def update(self, ticket: Ticket, id: int) -> Ticket:

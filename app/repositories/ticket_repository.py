@@ -14,7 +14,7 @@ class TicketRepository:
         entity.price = ticket.price
         entity.date = ticket.date
         entity.hour = ticket.hour
-        # AGREGAR MAS FILTRADOS
+   
         db.session.add(entity)
         db.session.commit()
         return entity
@@ -34,7 +34,5 @@ class TicketRepository:
             return db.session.query(Ticket).filter(Ticket.id == id).one()
         except:
             return None
-        
-    # no puse el metodo find_by_name por que no crei que hiciera falta
         
     
