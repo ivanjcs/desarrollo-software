@@ -49,7 +49,7 @@ class RoomTestCase(unittest.TestCase):
         room = self.__get_room()
         room_service.save(room)
 
-        room_service.delete(room)
+        room_service.delete(room.id)
         self.assertIsNone(room_service.find(room))
 
     def test_room_all(self):

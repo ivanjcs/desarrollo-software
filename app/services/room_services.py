@@ -12,7 +12,8 @@ class RoomService:
     def update(self, room: Room, id: int) -> Room:
         return repository.update(room, id)
     
-    def delete(self, room: Room) -> None:
+    def delete(self, id: int) -> None:
+        room = repository.find(id)
         repository.delete(room)
     
     def all(self) -> List[Room]:
