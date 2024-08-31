@@ -11,8 +11,9 @@ class TicketService:
     
     def update(self, ticket: Ticket, id: int) -> Ticket:
         return repository.update(ticket, id)
-    
-    def delete(self, ticket: Ticket) -> None:
+
+    def delete(self, id: int) -> None:
+        ticket = repository.find(id)
         repository.delete(ticket)
 
     def all(self) -> List[Ticket]:
