@@ -10,3 +10,11 @@ class Room(SoftDeleteMixin, AuditMixin,db.Model):
     name: str = db.Column(db.String(80), unique=True, nullable=False)
     number: int = db.Column(db.Integer, nullable=False)
     seatsnumber: int = db.Column(db.Integer, nullable=False)
+    
+    # Relación de 1 a muchos con feature
+    feature = db.relationship('Feature', back_populates='room')
+
+    def __init__ (self, name: str = None, number: int = None, seatsnumber: int = None):
+        self.name = name
+        self.number = number
+        self.seatsnumber = seatsnumber

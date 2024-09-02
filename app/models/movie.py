@@ -22,6 +22,9 @@ class Movie(SoftDeleteMixin, AuditMixin,db.Model):
     cast: str = db.Column(db.String(80), nullable=False)
     language: str = db.Column(db.String(80), nullable=False)
     
+    # Relación 1 a muchos con feature
+    feature = db.relationship('Feature', back_populates='movie')
+    
     def __init__(self, name: str = None, director: str = None, year: int = None, start_date: str = None, final_date: str = None, duration: int = None, description: str = None, genre: str = None, classification: str = None, cast: str = None, language: str = None):
         self.name = name
         self.director = director
