@@ -52,7 +52,7 @@ class TicketTestCase(unittest.TestCase):
 
         ticket_service.save(ticket)
 
-        ticket_service.delete(ticket)
+        ticket_service.delete(ticket.id)
         self.assertIsNone(ticket_service.find(ticket))
 
     def test_ticket_all(self):
