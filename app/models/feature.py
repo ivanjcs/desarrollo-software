@@ -13,3 +13,7 @@ class Feature(SoftDeleteMixin, AuditMixin,db.Model):
     date_from: str = Column(DateTime, nullable=False, default=datetime.now())
     date_to: str = Column(DateTime, nullable=False, default=datetime.now()+timedelta(weeks=2))
     
+
+    def __init__(self, date_from: str = None, date_to: str = None):
+        self.date_from = date_from
+        self.date_to = date_to

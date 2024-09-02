@@ -3,7 +3,7 @@ from app.mapping import ResponseSchema, TicketSchema
 from app.services.response_message import ResponseBuilder
 from app.services.ticket_services import TicketService
 
-ticket = Blueprint('room', __name__)
+ticket = Blueprint('ticket', __name__)
 ticket_schema = TicketSchema()
 response_schema = ResponseSchema()
 ticket_service = TicketService()
@@ -12,7 +12,7 @@ response_builder = ResponseBuilder()
 # 5 métodos
 
 # Guardar ticket
-@ticket.route('/rooms/add', methods=['POST'])
+@ticket.route('/tickets/add', methods=['POST'])
 def post_ticket():
     ticket = ticket_schema.load(request.json) 
     return {"ticket": ticket_schema.dump(ticket_service.save(ticket))}, 201
