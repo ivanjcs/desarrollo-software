@@ -20,14 +20,14 @@ def post_ticket():
 # Obtener ticket por ID
 @ticket.route('/tickets/<int:id>', methods=['GET'])
 def find(id:int):
-    response_builder.add_message("Ticket encontrada").add_status_code(100).add_data(ticket_schema.dump(ticket_service.find(id)))
+    response_builder.add_message("Ticket encontrado").add_status_code(100).add_data(ticket_schema.dump(ticket_service.find(id)))
     return response_schema.dump(response_builder.build()), 200
 
 # Borrar ticket
 @ticket.route('/tickets/<int:id>', methods=['DELETE'])
 def delete_ticket(id):
     ticket_service.delete(id)
-    response_builder.add_message("Ticket borrada").add_status_code(100).add_data({'id': id})
+    response_builder.add_message("Ticket borrado").add_status_code(100).add_data({'id': id})
     return response_schema.dump(response_builder.build()), 200
 
 
