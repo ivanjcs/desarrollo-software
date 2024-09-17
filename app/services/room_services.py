@@ -25,5 +25,5 @@ class RoomService:
     def find_by_name(self, name: str):
         return repository.find_by_name(name)
     
-    def find_by_number(self, number: id):
+    def find_by_number(self, number: int):
         return repository.find_by_number(number)

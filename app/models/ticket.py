@@ -14,9 +14,9 @@ class Ticket(db.Model):
     feature_id = db.Column('feature_id', db.Integer, db.ForeignKey('features.id'))
     feature = db.relationship("Feature", back_populates='ticket')
 
-    def __init__ (self, movie: str = None, price: int = None, date: str = None, hour: int = None, feature = None):
+    def __init__ (self, movie: str = None, price: int = None, date: str = None, hour: int = None, feature_id = None):
         self.movie = movie
         self.price = price
         self.date = date
         self.hour = hour
-        self.feature = feature 
+        self.feature_id = feature_id 

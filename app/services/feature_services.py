@@ -13,7 +13,8 @@ class FeatureService:
     def update(self, feature: Feature, id: int) -> Feature:
         return repository.update(feature, id)
     
-    def delete(self, feature: Feature) -> None:
+    def delete(self, id: int) -> None:
+        feature = self.find(id)
         repository.delete(feature)
 
     def all(self) -> List[Feature]:

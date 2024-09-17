@@ -13,25 +13,27 @@ class ResponseMessage:
 
 @dataclass(init=False)
 class ResponseBuilder:
-    add_message: str
-    add_status_code: int
-    add_data: dict = None
+    # cambio de nombre de atributos por sobrescritura sobre los métodos
+    _message: str
+    _status_code: int
+    _data: dict = None
 
     def add_message(self, message: str):
-        self.add_message = message
+        self._message = message  # cambio
         return self
     
     def add_status_code(self, status_code: int):
-        self.add_status_code = status_code
+        self._status_code = status_code  # cambio
         return self
     
     def add_data(self, data: dict):
-        self.add_data = data
+        self._data = data  # cambio
         return self
     
     def build(self):
         return ResponseMessage(
-            message=self.add_message,
-            status_code=self.add_status_code,
-            data=self.add_data
+            # cambio
+            message=self._message, 
+            status_code=self._status_code,
+            data=self._data
         )

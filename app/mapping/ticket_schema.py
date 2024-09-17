@@ -7,6 +7,7 @@ class TicketSchema(Schema):
     price = fields.Integer(required=True)
     date = fields.String(required=True)
     hour = fields.Integer(required=True)
+    feature_id = fields.Integer(required=True)
 
     @post_load
     def make_ticket(self, data, **kwargs):
